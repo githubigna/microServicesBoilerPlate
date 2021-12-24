@@ -1,21 +1,32 @@
 import  Stripe from 'stripe';
 let conf : Stripe.StripeConfig = {apiVersion:'2020-08-27'};
 const stripe = new Stripe('sk_test_51K8lUWAJHHybirKFYUBNTNN6necAoE4EHMRbQpQ8bDWSgL05KxHyt72kWOx2j8bQHy2HqouEwwyf93rid70fbZA900X2QjHRXo',conf);
-export namespace stripe{
-    interface card{
-        number:string;
-        exp_month:number,
-        exp_year:number,
-        cvc:string,
+export class stripeService{
+    constructor(){};
+    /**
+     * 
+     * 
+     * CLIENT METHODS
+     */
+    async postClient(client:Stripe.CustomerCreateParams){
+        let response =  await stripe.customers.create(client);
+        return response;
     }
-    interface paymentMethod{
-        type:string;
-        card:card;
+    async getClient(id:string){
+        let response =  await stripe.customers.retrieve(id);
+        return response;
     }
-    interface client{
-
+    async deleteClient(id:string){
+        let response =  await stripe.customers.del(id);
+        return response;
     }
-    interface subscription{
-
+    async updateClient(id:string){
+        let response =  await stripe.customers.update(id);
+        return response;
     }
+    /**
+     * 
+     * 
+     * 
+     */
 }

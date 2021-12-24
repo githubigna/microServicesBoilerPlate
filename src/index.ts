@@ -7,7 +7,6 @@ import cors from 'cors';
 dotenv.config();
 //CONFIGURANDO PUERTO DEL ENVIROMENT
 const PORT: number = parseInt(process.env.PORT as string, 10);
-console.log(process.env.PORT);
 //CONFIGURANDO EXPRESS
 const app = express();
 /**
