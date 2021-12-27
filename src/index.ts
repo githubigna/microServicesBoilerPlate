@@ -25,10 +25,10 @@ app.set("port", PORT || 3000);
 //INICIANDO LA APLICACIÓN
 //ROUTES
 const version = process.env.VERSION;
-const mainRoutes = require('./services/paymentHandler');
+const mainRoutes = require('./stripe/paymentHandler');
 app.use(mainRoutes);
-app.use(`${version}/subscription`,require('./services/suscriptions'));
-app.use(`${version}/client`,require('./services/clients'));
-app.use(`${version}/paymentMethod`,require('./services/paymentMethods'));
-app.use(`${version}/subscriptionItem`,require('./services/subscriptionItems'));
+app.use(`${version}/subscription`,require('./stripe/suscriptions'));
+app.use(`${version}/client`,require('./stripe/clients'));
+app.use(`${version}/paymentMethod`,require('./stripe/paymentMethods'));
+app.use(`${version}/subscriptionItem`,require('./stripe/subscriptionItems'));
 app.listen(app.get("port"),()=>{console.log("Server on port", app.get("port"));});
