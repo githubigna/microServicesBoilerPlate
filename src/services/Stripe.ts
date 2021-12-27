@@ -73,7 +73,7 @@ export class stripeService{
             response = await stripe.subscriptions.create({
                 customer: customerId,
                 items: [
-                    {price: process.env.FLOWY_PRICING},
+                    {price:pricing},
                 ],
                 });
         }catch(e){
