@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { stripeService } from "./Stripe";
-let stripe = new stripeService();
+import {Stripe} from "stripe";
+let conf : Stripe.StripeConfig = {apiVersion:'2020-08-27'};
+let stripe = new stripeService(`${process.env.STRIPE_SK}`,conf);
 const router = Router();
 router.post('/create', async (req,res)=>{
     let stripeResponse : any= await stripe.postSubscription(req.body.customerId,req.body.user);
